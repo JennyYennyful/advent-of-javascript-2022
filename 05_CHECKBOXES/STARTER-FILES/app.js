@@ -1,3 +1,4 @@
+const episodesListElement = document.querySelector('.episodes');
 const episodes = [
   {
     'id': 1,
@@ -148,3 +149,29 @@ const episodes = [
     'name': 'Building a Course'
   }
 ];
+
+const renderEpisodes = () => {
+  const episodeItemsHTMLString = episodes.map((episode, index) => {
+    return `
+    <li>
+      <label for="episode-${episode.id}">
+        <input type="checkbox" name="episode-${episode.id}" id="episode-${episode.id}" />
+        <span>${episode.id} || ${episode.name}</span>
+      </label>
+    </li>
+    `;
+  }).join('');
+  episodesListElement.innerHTML = episodeItemsHTMLString;
+}
+
+renderEpisodes();
+
+const checkboxes = document.querySelectorAll('.episodes li input[type="checkbox"]');
+
+checkboxes.forEach(element => element.addEventListener('click', (event) => {
+  console.log(event.shiftKey);
+}));
+
+// document.addEventListener('click', () => {
+
+// })
