@@ -164,14 +164,25 @@ const renderEpisodes = () => {
   episodesListElement.innerHTML = episodeItemsHTMLString;
 }
 
+const findPreviousCheckedSibling = (element) => {
+  let prevSibling = element.previousElementSibling;
+  while (prevSibling) {
+    let checkbox = prevSibling.querySelector('input[type="checkbox"]');
+    if ( checkbox.checked == false) {
+      checkbox.checked = true;
+    } else {
+      return;
+    }
+    prevSibling = prevSibling.previousElementSibling;
+  }
+};
+
 renderEpisodes();
 
 const checkboxes = document.querySelectorAll('.episodes li input[type="checkbox"]');
 
 checkboxes.forEach(element => element.addEventListener('click', (event) => {
-  console.log(event.shiftKey);
+  if (event.shiftKey) {
+    findPreviousCheckedSibling(element.closest('li'));
+  };
 }));
-
-// document.addEventListener('click', () => {
-
-// })
