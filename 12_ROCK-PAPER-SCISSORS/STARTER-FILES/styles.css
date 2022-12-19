@@ -68,9 +68,17 @@ body.winner.computer-wins {
 }
 
 body.computer-wins h1.you-win,
-body.you-win h1.computer-wins {
+body.you-win h1.computer-wins,
+body.draw h1.computer-wins {
   visibility: hidden;
 }
+body:not(.draw) h1.draw {
+  display: none;
+}
+body.draw h1.you-win {
+  display: none;
+}
+
 
 body.winner .wrapper {
   display: flex;
