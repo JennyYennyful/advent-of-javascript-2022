@@ -78,6 +78,9 @@ a:hover #my-circle {
   gap: 100px;
   position: relative;
 }
+.overlay.hidden {
+  display: none;
+}
 
 .product-image,
 .content {
